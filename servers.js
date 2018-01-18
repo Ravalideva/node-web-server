@@ -1,7 +1,9 @@
 const express = require('express');
 const hbs=require('hbs');
 const fs=require('fs');
+const port=process.env.PORT || 3000;
 var app=express();
+
 app.set('view engine','hbs');
 hbs.registerPartials(__dirname+'/views/partials');
 hbs.registerHelper('getCurrentYear',()=>
@@ -63,6 +65,6 @@ app.get('/bad',(req,res)=>
     'errorMessage':'Error while requesting the page'
   })
 });
-app.listen(3000,()=>{
-  console.log('Server is above to start');
+app.listen(port,()=>{
+  console.log(`Server is above to start at port number ${port}`);
 });
